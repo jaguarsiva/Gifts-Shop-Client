@@ -1,6 +1,6 @@
 <template>
-<div id="home" class="container">
-    <h2>Home</h2>
+<div id="lightings" class="container">
+    <h2>Lightings</h2>
 </div>
 </template>
 

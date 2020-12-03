@@ -1,32 +1,79 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<div id="app">
+	<Navbar></Navbar>
+	<router-view />
+	<FooterBar></FooterBar>
+</div>
 </template>
 
+<script>
+import Navbar from '@/components/Navbar.vue';
+import FooterBar from '@/components/FooterBar.vue';
+export default {
+	components: {
+		Navbar,
+		FooterBar
+	}
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+/* General Element Stylings */
+
+*, *::after, *::before
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
-#nav {
-  padding: 30px;
+html { overflow-x: hidden; }
+
+a { text-decoration: none; outline: none; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+ul { list-style-type: none; }
+
+button, .btn 
+{
+	border: none;
+	outline: none;
+	background: transparent;
+	display: inline-block;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+/* Common Stylings */
+
+html.no-scroll { overflow: hidden; }
+
+.container
+{
+	max-width: 1330px;
+	padding: 0 15px;
+	margin: 0 auto;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.flex
+{
+	display: flex;
+	flex-wrap: wrap;
 }
+
+.nav-sprite
+{
+	background-image: url("./assets/navsprite.png");
+	background-repeat: no-repeat;
+}
+
+/* Local Stylings */
+#app
+{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 </style>

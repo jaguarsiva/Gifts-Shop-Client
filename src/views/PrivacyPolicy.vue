@@ -1,6 +1,6 @@
 <template>
-<div id="home" class="container">
-    <h2>Home</h2>
+<div id="privacy" class="container">
+    <h2>Privacy Policy</h2>
 </div>
 </template>
 
