@@ -1,7 +1,8 @@
 <template>
 <nav>
     <div class="container nav-contents">
-        <router-link :to="{name: 'home'}">
+        <router-link :to="{name: 'home'}" class="brand-logo">
+            <img src="../assets/gift.png" alt="brand">
             <h2 class="brand"><i>G</i>ifts <span><i>S</i>hop</span> </h2>
         </router-link>
         <ul class="nav-links" :class="{'opened' : btnClicked, 'menu-close': isMenuClosing}">
@@ -33,18 +34,24 @@
                 title="user-icon-for-knowing-order-and-booking-details"
                 @click="openUserMenu"
             >
-                <ul class="users-menu" :class="{'opened': isUserOpened}">
-                    <li>
+                <ul class="users-menu" :class="{'opened': isUserOpened, 'big': userLogged}">
+                    <li v-show="!userLogged">
                         <router-link :to="{name: 'login'}">Login</router-link>
                     </li>
-                    <li>
+                    <li v-show="!userLogged">
                         <router-link :to="{name: 'signup'}">Signup</router-link>
                     </li>
-                    <li>
+                    <li v-show="userLogged">
+                        <router-link :to="{name: 'cart'}">Cart</router-link>
+                    </li>
+                    <li v-show="userLogged">
                         <router-link :to="{name: 'myorders'}">My Orders</router-link>
                     </li>
-                    <li>
+                    <li v-show="userLogged">
                         <router-link :to="{name: 'mybookings'}">My Bookings</router-link>
+                    </li>
+                    <li v-show="userLogged">
+                        <a @click="logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -87,20 +94,32 @@ export default {
                 setTimeout( () => {
                     this.btnClicked = false;
                     this.isMenuClosing = false;
-                    document.querySelector('html').classList.add('no-scroll');
+                    document.querySelector('html').classList.remove('no-scroll');
                 }, 500);
             }
             else
             {
                 this.btnClicked = true;
-                document.querySelector('html').classList.remove('no-scroll');
+                document.querySelector('html').classList.add('no-scroll');
             }
         },
         handleLinkClick(){
             if( this.btnClicked )
                 this.$refs.hamburger.click();
+        },
+        logout(){
+            this.$store.commit('LOG_USER',false);
+            this.$store.commit('PUSH_NOTIFICATION',{
+                type: 'info',
+                msg: 'Logout successful!'
+            });
         }
-    }
+    },
+    computed: {
+        userLogged() {
+            return this.$store.state.isUserLogged 
+        }
+    },
 }
 </script>
 
@@ -116,6 +135,10 @@ nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); }
     height: 100px;
     position: relative;
 }
+
+.brand-logo { display: flex; }
+
+.brand-logo img { height: 35px; margin-right: 9px; position: relative; bottom: 3px; }
 
 .brand
 {
@@ -219,15 +242,22 @@ nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); }
 .users-menu.opened 
 { 
     display: block; 
-    animation: open-users-menu 0.3s ease-out both;
+    animation: small-menu 0.3s ease-out both;
     overflow: hidden;
     box-shadow: 0px 0px 6px rgb(0, 0, 0,0.2);
     position: absolute;
     background-color: #ffffff;
     min-width: 150px;
-    height: 180px;
     padding: 12px 25px;
     border-radius: 6px;
+}
+
+.users-menu.opened.big { animation: open-users-menu 0.3s ease both; }
+
+@keyframes small-menu
+{
+    from { height: 0px; }
+    to { height: 100px; }
 }
 
 @keyframes open-users-menu
@@ -245,7 +275,7 @@ nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); }
 
 @media (min-width: 1024px) and (max-width: 1400px)
 {
-    .users-menu.opened { top: calc(100% - 12px); right: 15px; }
+    .users-menu.opened { top: calc(100% + 12px); right: 15px; }
 }
 
 @media (min-width: 400px) and (max-width: 1023px)
@@ -257,7 +287,7 @@ nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); }
 
 @media (max-width: 400px)
 {
-    .users-menu.opened { top: 100%; right: 15px; }
+    .users-menu.opened { top: calc(100% + 25px); right: 0; }
 }
 
 @media (min-width: 767px) 
@@ -283,6 +313,8 @@ nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); }
 
 @media (max-width: 767px)
 {
+    .hamburger { border: none; outline: none; }
+
     .hamburger-inner 
     {
         position: relative; 
