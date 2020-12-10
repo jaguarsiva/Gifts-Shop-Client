@@ -125,7 +125,7 @@ export default {
 
 <style scoped>
 
-nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); }
+nav { box-shadow: 0px 0px 12px rgb(0, 0, 0,0.1); position: relative; z-index: 2; }
 
 .nav-contents
 {

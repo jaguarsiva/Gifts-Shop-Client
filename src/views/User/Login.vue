@@ -10,14 +10,14 @@
                 <input type="checkbox" id="remember-me">
                 <label for="remember-me">Remember me</label>
             </div>
-            <button type="submit" class="btn login-btn">Login</button>
+            <button type="submit" class="btn fancy-btn login-btn">Login</button>
             <div class="forget-pass">
                 <p>Forget Password?</p>
             </div>
         </form>
         <div class="register-box">
             <h4> New to our Shop? </h4>
-            <router-link :to="{name: 'signup'}" class="btn signup-btn">
+            <router-link :to="{name: 'signup'}" class="btn fancy-btn signup-btn">
                 Create an Account
             </router-link>
         </div>

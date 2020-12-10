@@ -42,6 +42,8 @@ ul { list-style-type: none; }
 
 input { border: none; outline: none; }
 
+img { display: block; }
+
 .btn
 {
 	border: none;
@@ -49,22 +51,29 @@ input { border: none; outline: none; }
 	background: transparent;
 	display: inline-block;
 	cursor: pointer;
+	padding: 18px 24px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.fancy-btn
+{
 	position: relative;
 	z-index: 1;
 }
 
-.btn::after
+.fancy-btn::after
 {
 	content: "";
 	position: absolute;
 	top: 0; left: 0;
 	height: 100%; width: 100%;
-	background-color: rgb(0, 0, 0,0.25);
 	z-index: -1;
 	transform: scaleX(0);
 	transform-origin: left;
 	border-radius: inherit;
 	transition: transform 0.3s ease-in;
+	background-color: rgb(0,0,0,0.5);
 }
 
 .btn:hover::after, .btn:focus::after 
@@ -85,6 +94,13 @@ html.no-scroll { overflow: hidden; }
 {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.flex-center
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .nav-sprite

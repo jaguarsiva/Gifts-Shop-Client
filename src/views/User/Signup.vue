@@ -5,7 +5,7 @@
     <div class="container flex">
         <div class="login-box">
             <h4> Already registered? </h4>
-            <router-link :to="{name: 'login'}" class="btn login-btn">
+            <router-link :to="{name: 'login'}" class="btn fancy-btn login-btn">
                 Login here
             </router-link>
         </div>
@@ -13,7 +13,7 @@
             <h3>Welcome!<br /> Please Sign up now</h3>
             <input type="text" placeholder="Username" id="user-name" v-model="username" required>
             <input type="password" placeholder="Password" id="pass-word" v-model="password" required>
-            <button type="submit" class="btn signup-btn">Register</button>
+            <button type="submit" class="btn fancy-btn signup-btn">Register</button>
         </form>
     </div>
 </div>
