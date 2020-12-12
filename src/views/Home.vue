@@ -248,18 +248,17 @@ export default {
 
 .bouqet-img { margin-left: auto; }
 
-.bouqet-btn 
+.bouqet-btn
 { 
     background-color: #f0f0f2;
     color: black;
 }
 
-.bouqet-img
-{
-    filter: drop-shadow(0px 0px 18px rgb(0,0,0,0.25));
-}
+.bouqet-btn:hover { color: #ffffff; }
 
-.bouqet-btn::after { background-image: linear-gradient(315deg, #CD051B 0%, #F20424 74%); }
+.bouqet-btn::after { background-color: #4A4A4B; }
+
+.bouqet-img { filter: drop-shadow(0px 0px 18px rgb(0,0,0,0.25)); }
 
 .bouqets h2 , .bouqets p { color: #ffffff; }
 
@@ -269,7 +268,8 @@ export default {
     top: 100px; left: 50px;
 }
 
-.shape {
+.shape 
+{
     position: absolute;
     top: 0;
     left: 0;
@@ -278,7 +278,8 @@ export default {
     line-height: 0;
 }
 
-.shape svg {
+.shape svg 
+{
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
