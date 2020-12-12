@@ -50,6 +50,7 @@ export default {
                     type: 'success',
                     msg: 'Login successful!'
                 });
+                window.scrollTo(0,0);
             }
             else
             {

@@ -11,5 +11,6 @@ const api = axios.create({
 
 export default {
     registerUser: userObj => api.post('/users',userObj),
-    loginUser: (username,password) => api.get(`/users?username=${username}&password=${password}`)
+    loginUser: (username,password) => api.get(`/users?username=${username}&password=${password}`),
+    getAll: type => api.get('/' + type)
 };
